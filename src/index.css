@@ -301,13 +301,14 @@ body {
 .start__selectSubject__item--active {
   background: var(--third-font);
 }
-.quiz{
+.quiz {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding-top: 4rem;
 }
 .quiz__questionBox {
   width: 100%;
@@ -321,17 +322,17 @@ body {
   text-align: center;
   line-height: 2.5rem;
 }
-.quiz__answersBox{
+.quiz__answersBox {
   width: 100%;
-  height: 20rem;
+  height: 30rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 2rem;
+  flex-direction: column;
 }
 .quiz__answersBox__answerBtn {
-  width: 14rem;
+  width: 100%;
   height: 6rem;
   display: flex;
   align-items: center;
@@ -339,9 +340,46 @@ body {
   border-radius: 29px;
   background: var(--second-font);
   color: var(--third-font);
-  font-size: 16px;
-  font-family: 'bold-font';
+  font-size: 19px;
+  font-family: "bold-font";
 }
-.quiz__answersBox__answerBtn:active{
+.quiz__answersBox__answerBtn:active {
   scale: 98%;
+}
+.finish {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  flex-direction: column;
+}
+.finish__title {
+  font-size: 3.5rem;
+  color: var(--second-font);
+}
+.finish__score {
+  font-size: 8rem;
+  color: var(--third-font);
+}
+.finish__backBtn {
+  width: 12rem;
+  height: 7rem;
+  background: var(--second-font);
+  color: var(--third-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  border-radius: 20px;
+}
+
+
+
+@media only screen and (max-width: 500px) {
+  *{
+    cursor: default;
+  }
+  
 }

@@ -1,35 +1,44 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
-
+import context from "../../context";
+import shuffleArray from "../../../utils";
 export default function Quiz() {
-  // const [num, setNum] = useState(0);
+  const contextQuiz = useContext(context);
 
-  const { data, err } = useSWR("questions", () => fetch('http://localhost:3031/subjects').then(res => res.json()).then(data => console.log(data)));
+  const [questions, setQuestions] = useState([]);
+  const [num, setNum] = useState(0);
 
   useEffect(() => {
-    console.log('load');
-    if (err) {
-      console.log(data);
-    }else{
-      console.log(err);
+    if (contextQuiz.data) {
+      let shuffleArrays = contextQuiz.data[contextQuiz.subject].questions;
+      shuffleArray(shuffleArrays);
+      setQuestions(shuffleArrays.slice(0, 4));
     }
-  }, []);
+  }, [contextQuiz.data]);
 
-  // const answerHandler = () => {};
-
-  return (
+  const selectHandler = async (item) => {
+    if (item.correct) {
+      await setNum((p) => (p = p + 1));
+      await contextQuiz.setCorrectAnswer((p) => (p = p + 1));
+      if (num === 3) {
+        location.pathname = "/finish";
+      }
+    }
+  };
+  return questions[num] ? (
     <div className="quiz">
-      <div className="quiz__questionBox">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aliquid
-        consectetur corporis voluptatum. Placeat deserunt rem vero
-        necessitatibus harum eveniet.
-      </div>
+      <div className="quiz__questionBox">{questions[num].question}</div>
       <div className="quiz__answersBox">
-        <div className="quiz__answersBox__answerBtn">asdsdasdsD</div>
-        <div className="quiz__answersBox__answerBtn">SADS EDQE</div>
-        <div className="quiz__answersBox__answerBtn">asdsdD</div>
-        <div className="quiz__answersBox__answerBtn">DSas sDSD</div>
+        {questions[num].options?.map((item) => (
+          <div
+            key={item.text}
+            onClick={() => selectHandler(item)}
+            className="quiz__answersBox__answerBtn"
+          >
+            {item.text}
+          </div>
+        ))}
       </div>
     </div>
-  );
+  ) : null;
 }
