@@ -12,6 +12,12 @@ export default function Start() {
   });
 
   useEffect(() => {
+    contextStart.setCorrectAnswer(0)
+    contextStart.setSubject("")
+    contextStart.setMistakes([])
+  },[])
+
+  useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
   }, [status]);
 

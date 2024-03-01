@@ -5,11 +5,8 @@ export default function Finish() {
   const [score, setScore] = useState();
 
   useEffect(() => {
- 
     if (!isNaN(contextFinish.correctAnswer)) {
-      setScore(
-        Math.ceil((contextFinish.correctAnswer / 4) * 100)
-      );
+      setScore(Math.ceil((contextFinish.correctAnswer / 4) * 100));
     }
   }, []);
 
@@ -22,6 +19,21 @@ export default function Finish() {
         className="finish__backBtn"
       >
         back
+      </div>
+
+      <div className="finish__mistakeList">
+        {contextFinish.mistakes?.map((item) => 
+          
+            <div key={item.id} className="finish__mistakeList__item">
+              <p className="finish__mistakeList__item__question">
+                {item.question}
+              </p>
+              <p className="finish__mistakeList__item__answer">
+                {item.correctAnswer}
+              </p>
+            </div>
+          
+        )}
       </div>
     </div>
   );

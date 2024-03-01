@@ -4,6 +4,8 @@ import context from "./context";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
+window.reload;
+
 function App() {
   const routes = useRoutes(routesArray);
   const [subject, setSubject] = useState(() => {
@@ -16,9 +18,17 @@ function App() {
     );
     return localCorrectAnswer ? localCorrectAnswer : 0;
   });
+  const [mistakes, setMistakes] = useState(() => {
+    const localMistakes = JSON.parse(localStorage.getItem("mistakes"));
+    return localMistakes ? localMistakes : [];
+  });
   const { data } = useSWR("questions", () =>
     fetch("http://localhost:3031/subjects").then((res) => res.json())
   );
+
+  useEffect(() => {
+    localStorage.setItem("mistakes", JSON.stringify(mistakes));
+  }, [mistakes]);
 
   useEffect(() => {
     localStorage.setItem("correctAnswer", JSON.stringify(correctAnswer));
@@ -28,13 +38,17 @@ function App() {
     localStorage.setItem("subject", JSON.stringify(subject));
   }, [subject]);
 
-  useEffect(() => {
-    console.log(correctAnswer);
-  }, [correctAnswer]);
-
   return (
     <context.Provider
-      value={{ data, subject, setSubject, correctAnswer, setCorrectAnswer }}
+      value={{
+        data,
+        subject,
+        setSubject,
+        correctAnswer,
+        setCorrectAnswer,
+        mistakes,
+        setMistakes,
+      }}
     >
       <div className="App">{routes}</div>
     </context.Provider>
