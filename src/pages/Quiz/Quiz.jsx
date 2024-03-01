@@ -33,7 +33,6 @@ export default function Quiz() {
     if (item.correct) {
       await contextQuiz.setCorrectAnswer((p) => (p = p + 1));
     } else {
-      console.log('f');
       contextQuiz.setMistakes((p) => [...p, q]);
     }
     if (num === 3) {

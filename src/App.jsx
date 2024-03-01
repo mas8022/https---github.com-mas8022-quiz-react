@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 import routesArray from "./Routes";
 import context from "./context";
 import { useEffect, useState } from "react";
-import useSWR from "swr";
+import data from '../data'
 
 window.reload;
 
@@ -22,9 +22,6 @@ function App() {
     const localMistakes = JSON.parse(localStorage.getItem("mistakes"));
     return localMistakes ? localMistakes : [];
   });
-  const { data } = useSWR("questions", () =>
-    fetch("http://localhost:3031/subjects").then((res) => res.json())
-  );
 
   useEffect(() => {
     localStorage.setItem("mistakes", JSON.stringify(mistakes));

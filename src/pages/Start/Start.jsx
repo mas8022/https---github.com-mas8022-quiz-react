@@ -37,7 +37,7 @@ export default function Start() {
           <Link to={"/quiz"} className="link">
             <img
               className="image home__image"
-              src="../../../public/images/start.png"
+              src="/images/start.png"
               alt="sword"
             />
           </Link>
@@ -52,7 +52,7 @@ export default function Start() {
             >
               <img
                 className="image"
-                src="../../../public/images/sport.svg"
+                src="/images/sport.svg"
                 alt="sport"
               />
             </div>
@@ -67,7 +67,7 @@ export default function Start() {
             >
               <img
                 className="image"
-                src="../../../public/images/tv.svg"
+                src="/images/tv.svg"
                 alt="tv"
               />
             </div>
@@ -81,7 +81,7 @@ export default function Start() {
             >
               <img
                 className="image"
-                src="../../../public/images/tec.svg"
+                src="/images/tec.svg"
                 alt="technology"
               />
             </div>
@@ -95,7 +95,7 @@ export default function Start() {
             >
               <img
                 className="image"
-                src="../../../public/images/food.svg"
+                src="/images/food.svg"
                 alt="food"
               />
             </div>
@@ -109,7 +109,7 @@ export default function Start() {
             >
               <img
                 className="image"
-                src="../../../public/images/animal.svg"
+                src="/images/animal.svg"
                 alt="animal"
               />
             </div>
@@ -123,7 +123,7 @@ export default function Start() {
             >
               <img
                 className="image"
-                src="../../../public/images/math.svg"
+                src="/images/math.svg"
                 alt="math"
               />
             </div>
@@ -133,7 +133,7 @@ export default function Start() {
         <>
           <img
             className="image start__image"
-            src="../../../public/images/questions.png"
+            src="/images/questions.png"
             alt="questions"
           />
 
@@ -207,7 +207,7 @@ export default function Start() {
               >
                 <img
                   className="image start__welcomeBox__nextBtn__image"
-                  src="../../../public/images/tik.svg"
+                  src="/images/tik.svg"
                   alt="start button"
                 />
               </div>
@@ -218,7 +218,7 @@ export default function Start() {
               >
                 <img
                   className="image start__welcomeBox__nextBtn__image"
-                  src="../../../public/images/arrow-right.svg"
+                  src="/images/arrow-right.svg"
                   alt="next button"
                 />
               </div>
